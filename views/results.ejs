@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        <ul class="results-list">
+            <% tracks.forEach(track=> { %>
+                <li>
+                    <strong>
+                        <%= track.name %>
+                    </strong> by <%= track.artists.map(artist=> artist.name).join(', ') %>
+                        (Album: <%= track.album.name %>)
+                </li>
+                <% }); %>
+        </ul>
+        <a href="/" class="back-button">Back to Home</a>
+    </div>
+</body>
+
+</html>

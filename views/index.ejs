@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Song Finder</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Spotify Song Finder</h1>
+        <form action="/search" method="get">
+            <input type="text" name="q" placeholder="Enter a song or artist" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (tracks) { %>
+            <div class="results">
+                <% tracks.forEach(track=> { %>
+                    <div class="track">
+                        <img src="<%= track.album.images[0]?.url %>" alt="Album Art">
+                        <h3>
+                            <%= track.name %>
+                        </h3>
+                        <p><strong>Artist(s):</strong>
+                            <%= track.artists.map(artist=> artist.name).join(', ') %>
+                        </p>
+                        <p><strong>Album:</strong>
+                            <%= track.album.name %>
+                        </p>
+                        <p><strong>Release Date:</strong>
+                            <%= track.album.release_date %>
+                        </p>
+                        <a href="<%= track.external_urls.spotify %>" target="_blank">Listen on Spotify</a>
+                    </div>
+                    <% }); %>
+            </div>
+            <% } %>
+    </div>
+    <footer class="footer">
+        <p>Made by <strong>Adi Mukhamedzhan</strong></p>
+    </footer>
+</body>
+
+</html>
